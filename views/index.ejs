@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <!-- Favicon.ico error -->
+    <link rel="shortcut icon" href="#" />
+    <title>Movies App</title>
+  </head>
+  <body>
+    <header>
+      <h1 id="logo">Movie Records🎬</h1>
+      <div class="required">
+        <select name="fields" id="select-field">
+          <option value="" selected>select-an-option</option>
+          <option value="genre">Genre</option>
+          <option value="language">Language</option>
+          <option value="rating">Rating</option>
+          <option value="title">Title</option>
+          <option value="adult">Adult</option>
+        </select>
+      </div>
+      <div class="dependeant">
+        <select name="values" class="select-value hidden">
+          <option value="" selected>select-an-option</option>
+        </select>
+      </div>
+    </header>
+    <main id="main">
+      <% movies.forEach((movie) => { %>
+      <div class="movie">
+        <% const IMG_PATH = "https://image.tmdb.org/t/p/w500"+movie.path ; %>
+        <img src="<%= IMG_PATH %>" alt="" />
+        <div class="movie-info">
+          <h3><%= movie.title %></h3>
+          <span class="green"><%= movie.rating %></span>
+          <span><%= movie.language.toUpperCase(); %></span>
+          <% const adult = movie.adult ? "A" : "UA" %>
+          <span><%= adult %></span>
+        </div>
+        <div class="overview">
+          <h3>Overview</h3>
+          <%= movie.overview %>
+        </div>
+      </div>
+      <% }); %>
+    </main>
+    <footer>
+      <button id="left" class="hidden">Prev</button>
+      <span class="page">1</span>
+      <button id="right">Next</button>
+    </footer>
+    <script src="/js/app.js"></script>
+  </body>
+</html>
